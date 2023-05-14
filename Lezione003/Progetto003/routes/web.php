@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route; 
+use App\Http\Controllers\PageController;    // importare il file es. PageController 
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-}) -> name('homepage'); 
+Route::get('/', [PageController::class, 'goToHomepage']) -> name('homepage'); 
 
-Route::get('/detail', function () {
-    return view('detail');
-}) -> name('detail'); 
-
+Route::get('/detail', [PageController::class, 'goToDetail']) -> name('detail'); 
 
