@@ -14,7 +14,8 @@ use App\Http\Controllers\PageController;    // importare il file es. PageControl
 |
 */
 
+// Rotta homepage Arrivi/Partenze 
 Route::get('/', [PageController::class, 'goToHomepage']) -> name('homepage'); 
 
-Route::get('/detail', [PageController::class, 'goToDetail']) -> name('detail'); 
-
+// Rotta detail singolo volo 
+Route::get('/detail/{id}', [PageController::class, 'goToDetail']) -> name('detail'); 
