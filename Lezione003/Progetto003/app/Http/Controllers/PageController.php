@@ -82,18 +82,18 @@ class PageController extends Controller
 
     public function goToDetail($ref)    // dettagli singolo volo 
     {
-
+        // cicli distinti Partenze/Arrivi singoli voli 
         foreach (self::$flights['departure'] as $flightDeparture) {
             // dd($ref);
             if ($ref == $flightDeparture['id']) {
-                return view('detail', ["flightDetail" => $flightDeparture['id']]);
+                return view('detail', ['flights' => self::$flights = 'departure'], ['flightDetail' => $flightDeparture]);
             }
         }
 
         foreach (self::$flights['arrival'] as $flightArrival) {
             // dd($ref);
             if ($ref == $flightArrival['id']) {
-                return view('detail', ['flightDetail' => $flightArrival['id']]);
+                return view('detail', ['flights' => self::$flights = 'arrival'], ['flightDetail' => $flightArrival]);
             }
         }
     }

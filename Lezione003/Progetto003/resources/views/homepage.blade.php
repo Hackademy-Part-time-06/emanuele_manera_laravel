@@ -42,7 +42,6 @@
                         <ul class="list-group list-group-flush">
                         @foreach ($flights['departure'] as $flightDeparture)
                             <!-- richiamo array passato come secondo parametro in PageController -->
-
                             <li class="list-group-item">
                                 {{ $flightDeparture['company'] }}
                                 <a href="{{ route('detail', $flightDeparture['id']) }}">{{ $flightDeparture['id'] }}</a>

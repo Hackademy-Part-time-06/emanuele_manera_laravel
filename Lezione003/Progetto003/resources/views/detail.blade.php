@@ -34,7 +34,52 @@
         </div>
     </nav>
 
-    <div>{{ $flightDetail }}</div>
+
+    @if ($flights == 'departure') 
+   <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="width: 50%;">
+                    <div class="card-header">{{ $flightDetail['id'] }}</div>
+                        <img src="{{ $flightDetail['cover'] }}">
+                        <ul>
+                            <li> {{ $flightDetail['company'] }}</li>
+                            <li> {{ $flightDetail['city'] }}</li>
+                            <li> {{ $flightDetail['time'] }}</li>
+                            <li> {{ $flightDetail['gate'] }}</li>
+                            <li>
+                                @if ($flightDetail['seats']['total'] - $flightDetail['seats']['occupied'] > 0) 
+                                {{ 'Posti ancora disponibili: ' . $flightDetail['seats']['total'] - $flightDetail['seats']['occupied']}} 
+                                @else 
+                                {{ 'Sold out'}} 
+                                @endif 
+                            </li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @elseif ($flights == 'arrival')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="width: 50%;">
+                    <div class="card-header">{{ $flightDetail['id'] }}</div>
+                        <img src="{{ $flightDetail['cover'] }}">
+                        <ul>
+                            <li> {{ $flightDetail['company'] }}</li>
+                            <li> {{ $flightDetail['city'] }}</li>
+                            <li> {{ $flightDetail['time'] }}</li>
+                            <li> {{ $flightDetail['gate'] }}</li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @endif 
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
