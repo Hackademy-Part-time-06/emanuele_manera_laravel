@@ -21,7 +21,6 @@ class Main extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('template.main');   // percorso: Lezione003/Progetto003/resources/views/template/main.blade.php 
-        // il componente main mi serve per indirizzare ad una cartella differente da components 
+        return view('layouts.main');     // Lezione005/ProgettoPalestra/resources/views/layouts/main.blade.php
     }
 }

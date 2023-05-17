@@ -86,14 +86,16 @@ class PageController extends Controller
         foreach (self::$flights['departure'] as $flightDeparture) {
             // dd($ref);
             if ($ref == $flightDeparture['id']) {
-                return view('detail', ['flights' => self::$flights = 'departure'], ['flightDetail' => $flightDeparture]);
+                return view('detail', ['flightDetail' => $flightDeparture]);    // ATTENZIONE al numero di parametri passati (vedi documentazione)
+                // return view('detail', ['flights' => 'departure', 'flightDetail' => $flightDeparture]);
             }
         }
 
         foreach (self::$flights['arrival'] as $flightArrival) {
             // dd($ref);
             if ($ref == $flightArrival['id']) {
-                return view('detail', ['flights' => self::$flights = 'arrival'], ['flightDetail' => $flightArrival]);
+                return view('detail', ['flightDetail' => $flightArrival]);
+                // return view('detail', ['flights' => 'arrival', 'flightDetail' => $flightArrival]);
             }
         }
     }
