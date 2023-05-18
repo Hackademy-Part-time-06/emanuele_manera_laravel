@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Mail\InfoMail;
+use Illuminate\Http\Request; // si attiva utilizzando Request nel metodo 
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
@@ -33,8 +35,36 @@ class PageController extends Controller
         // se non trova alcuna corrispondenza visualizza errore 404 
         abort(404);
     } 
-    // Route contact 
+    // Route contact GET
     public function goToContact () {
         return view('contact');
+    }
+    // Route contact POST
+    public function send (Request $request) {
+        // dd($request->name);
+        // dd($request->all()); 
+
+        // validazione dei dati 
+        $request->validate([
+            "name" => "required|string",
+            "phone" => "required|numeric",
+            "email" => "required|email",
+            "message" => "required|min:10",
+        ]);
+
+        // array dei dati - mapping dei dati
+        $data = [
+            "name" => $request->name,
+            "phone" => $request->phone,
+            "email" => $request->input('email'),
+            "message" => $request->message,
+        ]; 
+        // dd($data);
+
+        Mail::to($request->input('email'))->send(new InfoMail($data));
+
+        return redirect()
+                        ->route('homepage')
+                        ->with('success', 'Email inviata correttamente');
     }
 }
