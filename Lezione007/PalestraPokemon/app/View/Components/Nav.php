@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Main extends Component
+class Nav extends Component
 {
     /**
      * Create a new component instance.
@@ -21,12 +21,6 @@ class Main extends Component
      */
     public function render(): View|Closure|string
     {
-        // Lezione007/PalestraPokemon/resources/views/
-        // layouts/main
-        // .blade.php 
-        // Lezione007/PalestraPokemon/resources/views/pokemon/index.blade.php 
-        // Lezione007/PalestraPokemon/resources/views/template/main.blade.php
-
-        return view('template.main');
+        return view('components.nav');
     }
 }
