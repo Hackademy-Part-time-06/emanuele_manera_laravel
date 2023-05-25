@@ -24,6 +24,6 @@ class Main extends Component
         // Lezione008/Library/resources/views/
         // layouts/index
         // .blade.php
-        return view('index');
+        return view('book.index');
     }
 }

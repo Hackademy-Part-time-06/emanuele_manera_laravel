@@ -12,10 +12,14 @@
 </head>
 <body>
     
+    @if (session('success'))
+    Libro aggiunto alla lista
+    @endif
+
     <ul>
         @foreach ($books as $book)
         <li>
-            {{$book['author']}}, {{$book['title']}}, prima ed. {{$book['year']}}
+            {{$book['author']}}, <a href="{{route('book.show', ['libro' => $book['id']])}}"> {{$book['title']}} </a>, prima ed. {{$book['year']}}
         </li>
         @endforeach
     </ul>

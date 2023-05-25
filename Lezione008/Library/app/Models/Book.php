@@ -10,5 +10,4 @@ class Book extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'pages', 'author', 'year']; // campi compilabili 
-
 }
